@@ -39,6 +39,12 @@ BEGIN
     RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
+CREATE TRIGGER composants_cdc_changes
+AFTER INSERT OR UPDATE OR DELETE ON composants
+FOR EACH ROW
+EXECUTE FUNCTION composants_cdc_trigger();
+
+
 
 
 /* 2024-06-23 11:21:20 [15 ms] */ 
@@ -60,7 +66,7 @@ END;
 $$ LANGUAGE plpgsql;
 /* 2024-06-23 11:21:21 [12 ms] */ 
 CREATE TRIGGER degradations_cdc_changes
-AFTER INSERT OR UPDATE OR DELETE ON composants
+AFTER INSERT OR UPDATE OR DELETE ON degradations
 FOR EACH ROW
 EXECUTE FUNCTION degradations_cdc_trigger();
 
@@ -84,6 +90,6 @@ END;
 $$ LANGUAGE plpgsql;
 /* 2024-06-23 11:27:05 [8 ms] */ 
 CREATE TRIGGER logs_vols_cdc_changes
-AFTER INSERT OR UPDATE OR DELETE ON aeronefs
+AFTER INSERT OR UPDATE OR DELETE ON logs_vols
 FOR EACH ROW
 EXECUTE FUNCTION logs_vols_cdc_trigger();
