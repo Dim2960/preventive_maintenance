@@ -3,8 +3,7 @@ CREATE DATABASE preventive_maintenance;
 
 
 CREATE TABLE aeronefs (
-    ID_aeronef SERIAL PRIMARY KEY,
-    ref_aero VARCHAR(15) NOT NULL,
+    ref_aero VARCHAR(15) NOT NULL PRIMARY KEY UNIQUE,
     type_model VARCHAR(15) NOT NULL,
     debut_service DATE NOT NULL,
     last_maint DATE NOT NULL,
@@ -14,7 +13,6 @@ CREATE TABLE aeronefs (
 
 CREATE TABLE aeronefs_cdc (
     operation CHAR(1) NOT NULL, -- 'I' pour INSERT, 'U' pour UPDATE, 'D' pour DELETE
-    ID_aeronef INT,
     ref_aero VARCHAR(15),
     type_model VARCHAR(15),
     debut_service DATE,
@@ -25,8 +23,7 @@ CREATE TABLE aeronefs_cdc (
 );
 
 CREATE TABLE composants (
-    ID_composant SERIAL PRIMARY KEY,
-    ref_compo VARCHAR(25) NOT NULL,
+    ref_compo VARCHAR(25) PRIMARY KEY,
     categorie VARCHAR(50) NOT NULL,
     aero VARCHAR(15) NOT NULL,
     description  VARCHAR(255) NOT NULL,
@@ -37,7 +34,6 @@ CREATE TABLE composants (
 
 CREATE TABLE composants_cdc (
     operation CHAR(1) NOT NULL, -- 'I' pour INSERT, 'U' pour UPDATE, 'D' pour DELETE
-    ID_composant SERIAL PRIMARY KEY,
     ref_compo VARCHAR(25) NOT NULL,
     categorie VARCHAR(50) NOT NULL,
     aero VARCHAR(15) NOT NULL,
@@ -49,8 +45,7 @@ CREATE TABLE composants_cdc (
 );
 
 CREATE TABLE degradations (
-    ID_deg SERIAL PRIMARY KEY,
-    ref_deg VARCHAR(15) NOT NULL,
+    ref_deg VARCHAR(15) NOT NULL PRIMARY KEY,
     linked_aero VARCHAR(15) NOT NULL,
     compo_concerned VARCHAR(25) NOT NULL,
     usure_nouvelle FLOAT NOT NULL,
@@ -60,7 +55,6 @@ CREATE TABLE degradations (
 
 CREATE TABLE degradations_cdc (
     operation CHAR(1) NOT NULL, -- 'I' pour INSERT, 'U' pour UPDATE, 'D' pour DELETE
-    ID_deg SERIAL PRIMARY KEY,
     ref_deg VARCHAR(15) NOT NULL,
     linked_aero VARCHAR(15) NOT NULL,
     compo_concerned VARCHAR(25) NOT NULL,
@@ -72,7 +66,6 @@ CREATE TABLE degradations_cdc (
 
 
 CREATE TABLE logs_vols (
-    ID_vol SERIAL PRIMARY KEY,
     ref_vol VARCHAR(15) NOT NULL,
     aero_linked VARCHAR(15) NOT NULL,
     jour_vol DATE NOT NULL,
@@ -83,7 +76,6 @@ CREATE TABLE logs_vols (
 
 CREATE TABLE logs_vols_cdc (
     operation CHAR(1) NOT NULL, -- 'I' pour INSERT, 'U' pour UPDATE, 'D' pour DELETE
-    ID_vol SERIAL PRIMARY KEY,
     ref_vol VARCHAR(15) NOT NULL,
     aero_linked VARCHAR(15) NOT NULL,
     jour_vol DATE NOT NULL,
