@@ -1,5 +1,5 @@
 -- Active: 1718803304234@@127.0.0.1@5432
-CREATE DATABASE preventive_maintenance;
+-- CREATE DATABASE preventive_maintenance;
 
 
 CREATE TABLE aeronefs (
@@ -26,7 +26,7 @@ CREATE TABLE composants (
     ref_compo VARCHAR(25) PRIMARY KEY,
     categorie VARCHAR(50) NOT NULL,
     aero VARCHAR(15) NOT NULL,
-    description  VARCHAR(255) NOT NULL,
+    desc_compo  VARCHAR(255) NOT NULL,
     lifespan INT NOT NULL,
     taux_usure_actuel FLOAT,
     cout INT NOT NULL
@@ -37,7 +37,7 @@ CREATE TABLE composants_cdc (
     ref_compo VARCHAR(25) NOT NULL,
     categorie VARCHAR(50) NOT NULL,
     aero VARCHAR(15) NOT NULL,
-    description VARCHAR(255) NOT NULL,
+    desc_compo VARCHAR(255) NOT NULL,
     lifespan INT NOT NULL,
     taux_usure_actuel FLOAT,
     cout INT NOT NULL,

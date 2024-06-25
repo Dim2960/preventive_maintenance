@@ -27,14 +27,14 @@ CREATE OR REPLACE FUNCTION composants_cdc_trigger()
 RETURNS TRIGGER AS $$
 BEGIN
     IF (TG_OP = 'INSERT') THEN
-        INSERT INTO composants_cdc (operation, ref_compo, categorie, aero, description, lifespan, taux_usure_actuel, cout)
-        VALUES ('I', NEW.ref_compo, NEW.categorie, NEW.aero, NEW.description, NEW.lifespan, NEW.taux_usure_actuel, NEW.cout);
+        INSERT INTO composants_cdc (operation, ref_compo, categorie, aero, desc_compo, lifespan, taux_usure_actuel, cout)
+        VALUES ('I', NEW.ref_compo, NEW.categorie, NEW.aero, NEW.desc_compo, NEW.lifespan, NEW.taux_usure_actuel, NEW.cout);
     ELSIF (TG_OP = 'UPDATE') THEN
-        INSERT INTO composants_cdc (operation, ref_compo,categorie, aero, description, lifespan, taux_usure_actuel, cout)
-        VALUES ('U', NEW.ref_compo, NEW.categorie, NEW.aero, NEW.description, NEW.lifespan, NEW.taux_usure_actuel, NEW.cout);
+        INSERT INTO composants_cdc (operation, ref_compo,categorie, aero, desc_compo, lifespan, taux_usure_actuel, cout)
+        VALUES ('U', NEW.ref_compo, NEW.categorie, NEW.aero, NEW.desc_compo, NEW.lifespan, NEW.taux_usure_actuel, NEW.cout);
     ELSIF (TG_OP = 'DELETE') THEN
-        INSERT INTO composants_cdc (operation, ref_compo,categorie, aero, description, lifespan, taux_usure_actuel, cout)
-        VALUES ('D', OLD.ref_compo, OLD.categorie, OLD.aero, OLD.description, OLD.lifespan, OLD.taux_usure_actuel, OLD.cout);
+        INSERT INTO composants_cdc (operation, ref_compo,categorie, aero, desc_compo, lifespan, taux_usure_actuel, cout)
+        VALUES ('D', OLD.ref_compo, OLD.categorie, OLD.aero, OLD.desc_compo, OLD.lifespan, OLD.taux_usure_actuel, OLD.cout);
     END IF;
     RETURN NULL;
 END;
