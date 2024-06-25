@@ -74,12 +74,12 @@ CREATE TABLE logs_vols (
     time_en_air FLOAT NOT NULL,
     sensor_data VARCHAR(255) NOT NULL,
     etat_voyant INT NOT NULL,
-    vibrations FLOAT NOT NULL,
-    vibrations_unit VARCHAR(255) NOT NULL,
     temp FLOAT NOT NULL,
     temp_unit VARCHAR(255) NOT NULL,
     pressure FLOAT NOT NULL,
-    pressure_unit VARCHAR(255) NOT NULL
+    pressure_unit VARCHAR(255) NOT NULL,
+    vibrations FLOAT NOT NULL,
+    vibrations_unit VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE logs_vols_cdc (
@@ -90,12 +90,12 @@ CREATE TABLE logs_vols_cdc (
     time_en_air FLOAT NOT NULL,
     sensor_data VARCHAR(255) NOT NULL,
     etat_voyant INT NOT NULL,
-    vibrations FLOAT NOT NULL,
-    vibrations_unit VARCHAR(255) NOT NULL,
     temp FLOAT NOT NULL,
     temp_unit VARCHAR(255) NOT NULL,
     pressure FLOAT NOT NULL,
     pressure_unit VARCHAR(255) NOT NULL,
+    vibrations FLOAT NOT NULL,
+    vibrations_unit VARCHAR(255) NOT NULL,
     change_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

@@ -36,10 +36,11 @@ while debut <= fin:
     list_date.append(debut.strftime('%Y-%m-%d'))  # Formatage de la date comme chaîne de caractères
     debut += timedelta(days=1)  # Incrémentation d'un jour
 
-# Affichage des dates
-print(list_date)
 
+compteur = 1
 
 for date in list_date:
+    print(f'jour n {compteur} sur {len(list_date)}')
     run_notebook(date)
+    compteur =+ 1
 

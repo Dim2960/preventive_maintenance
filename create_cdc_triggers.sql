@@ -76,14 +76,14 @@ CREATE OR REPLACE FUNCTION logs_vols_cdc_trigger()
 RETURNS TRIGGER AS $$
 BEGIN
     IF (TG_OP = 'INSERT') THEN
-        INSERT INTO logs_vols_cdc (operation, ref_vol, aero_linked, jour_vol, time_en_air, sensor_data, etat_voyant, vibrations, vibrations_unit, temp, temp_unit, pressure, pressure_unit)
-        VALUES ('I', NEW.ref_vol, NEW.aero_linked, NEW.jour_vol, NEW.time_en_air, NEW.sensor_data, NEW.etat_voyant, NEW.vibrations, NEW.vibrations_unit, NEW.temp, NEW.temp_unit, NEW.pressure, NEW.pressure_unit);
+        INSERT INTO logs_vols_cdc (operation, ref_vol, aero_linked, jour_vol, time_en_air, sensor_data, etat_voyant, temp, temp_unit, pressure, pressure_unit, vibrations, vibrations_unit)
+        VALUES ('I', NEW.ref_vol, NEW.aero_linked, NEW.jour_vol, NEW.time_en_air, NEW.sensor_data, NEW.etat_voyant, NEW.temp, NEW.temp_unit, NEW.pressure, NEW.pressure_unit, NEW.vibrations, NEW.vibrations_unit);
     ELSIF (TG_OP = 'UPDATE') THEN
-        INSERT INTO logs_vols_cdc (operation, ref_vol, aero_linked, jour_vol, time_en_air, sensor_data, etat_voyant, vibrations, vibrations_unit, temp, temp_unit, pressure, pressure_unit)
-        VALUES ('U', NEW.ref_vol, NEW.aero_linked, NEW.jour_vol, NEW.time_en_air, NEW.sensor_data, NEW.etat_voyant, NEW.vibrations, NEW.vibrations_unit, NEW.temp, NEW.temp_unit, NEW.pressure, NEW.pressure_unit);
+        INSERT INTO logs_vols_cdc (operation, ref_vol, aero_linked, jour_vol, time_en_air, sensor_data, etat_voyant, temp, temp_unit, pressure, pressure_unit, vibrations, vibrations_unit)
+        VALUES ('U', NEW.ref_vol, NEW.aero_linked, NEW.jour_vol, NEW.time_en_air, NEW.sensor_data, NEW.etat_voyant, NEW.temp, NEW.temp_unit, NEW.pressure, NEW.pressure_unit, NEW.vibrations, NEW.vibrations_unit);
     ELSIF (TG_OP = 'DELETE') THEN
-        INSERT INTO logs_vols_cdc (operation, ref_vol, aero_linked, jour_vol, time_en_air, sensor_data, etat_voyant, vibrations, vibrations_unit, temp, temp_unit, pressure, pressure_unit)
-        VALUES ('D', OLD.ref_vol, OLD.aero_linked, OLD.jour_vol, OLD.time_en_air, OLD.sensor_data, OLD.etat_voyant, OLD.vibrations, OLD.vibrations_unit, OLD.temp, OLD.temp_unit, OLD.pressure, OLD.pressure_unit);
+        INSERT INTO logs_vols_cdc (operation, ref_vol, aero_linked, jour_vol, time_en_air, sensor_data, etat_voyant, temp, temp_unit, pressure, pressure_unit, vibrations, vibrations_unit)
+        VALUES ('D', OLD.ref_vol, OLD.aero_linked, OLD.jour_vol, OLD.time_en_air, OLD.sensor_data, OLD.etat_voyant, OLD.temp, OLD.temp_unit, OLD.pressure, OLD.pressure_unit, OLD.vibrations, OLD.vibrations_unit);
     END IF;
     RETURN NULL;
 END;
