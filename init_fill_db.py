@@ -26,7 +26,7 @@ def run_notebook(date:str):
 
 # Définition des dates de début et de fin
 debut = datetime(2024, 6, 5)  # Date de début (année, mois, jour)
-fin = datetime(2024, 6, 25)  # Date de fin (année, mois, jour)
+fin = datetime(2024, 6, 24)  # Date de fin (année, mois, jour)
 
 # Liste pour stocker les dates
 list_date = []
@@ -40,7 +40,7 @@ while debut <= fin:
 compteur = 1
 
 for date in list_date:
-    print(f'jour n {compteur} sur {len(list_date)}')
+    print(f'jour n {compteur} sur {len(list_date)}\n')
     run_notebook(date)
-    compteur =+ 1
+    compteur += 1
 
