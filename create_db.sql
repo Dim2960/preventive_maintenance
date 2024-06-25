@@ -45,7 +45,8 @@ CREATE TABLE composants_cdc (
 );
 
 CREATE TABLE degradations (
-    ref_deg VARCHAR(15) NOT NULL PRIMARY KEY,
+    clef VARCHAR(100) NOT NULL PRIMARY KEY,
+    ref_deg VARCHAR(15) NOT NULL,
     linked_aero VARCHAR(15) NOT NULL,
     compo_concerned VARCHAR(25) NOT NULL,
     usure_nouvelle FLOAT NOT NULL,
@@ -55,6 +56,7 @@ CREATE TABLE degradations (
 
 CREATE TABLE degradations_cdc (
     operation CHAR(1) NOT NULL, -- 'I' pour INSERT, 'U' pour UPDATE, 'D' pour DELETE
+    clef VARCHAR(100) NOT NULL,
     ref_deg VARCHAR(15) NOT NULL,
     linked_aero VARCHAR(15) NOT NULL,
     compo_concerned VARCHAR(25) NOT NULL,
@@ -66,12 +68,18 @@ CREATE TABLE degradations_cdc (
 
 
 CREATE TABLE logs_vols (
-    ref_vol VARCHAR(15) NOT NULL,
+    ref_vol VARCHAR(15) NOT NULL PRIMARY KEY,
     aero_linked VARCHAR(15) NOT NULL,
     jour_vol DATE NOT NULL,
     time_en_air FLOAT NOT NULL,
     sensor_data VARCHAR(255) NOT NULL,
-    etat_voyant INT NOT NULL
+    etat_voyant INT NOT NULL,
+    vibrations FLOAT NOT NULL,
+    vibrations_unit VARCHAR(255) NOT NULL,
+    temp FLOAT NOT NULL,
+    temp_unit VARCHAR(255) NOT NULL,
+    pressure FLOAT NOT NULL,
+    pressure_unit VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE logs_vols_cdc (
@@ -82,6 +90,12 @@ CREATE TABLE logs_vols_cdc (
     time_en_air FLOAT NOT NULL,
     sensor_data VARCHAR(255) NOT NULL,
     etat_voyant INT NOT NULL,
+    vibrations FLOAT NOT NULL,
+    vibrations_unit VARCHAR(255) NOT NULL,
+    temp FLOAT NOT NULL,
+    temp_unit VARCHAR(255) NOT NULL,
+    pressure FLOAT NOT NULL,
+    pressure_unit VARCHAR(255) NOT NULL,
     change_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

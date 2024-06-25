@@ -52,14 +52,14 @@ CREATE OR REPLACE FUNCTION degradations_cdc_trigger()
 RETURNS TRIGGER AS $$
 BEGIN
     IF (TG_OP = 'INSERT') THEN
-        INSERT INTO degradations_cdc (operation, ref_deg, linked_aero, compo_concerned, usure_nouvelle, measure_day, need_replacement)
-        VALUES ('I', NEW.ref_deg, NEW.linked_aero, NEW.compo_concerned, NEW.usure_nouvelle, NEW.measure_day, NEW.need_replacement);
+        INSERT INTO degradations_cdc (operation, clef, ref_deg, linked_aero, compo_concerned, usure_nouvelle, measure_day, need_replacement)
+        VALUES ('I', NEW.clef, NEW.ref_deg, NEW.linked_aero, NEW.compo_concerned, NEW.usure_nouvelle, NEW.measure_day, NEW.need_replacement);
     ELSIF (TG_OP = 'UPDATE') THEN
-        INSERT INTO degradations_cdc (operation, ref_deg, linked_aero, compo_concerned, usure_nouvelle, measure_day, need_replacement)
-        VALUES ('U', NEW.ref_deg, NEW.linked_aero, NEW.compo_concerned, NEW.usure_nouvelle, NEW.measure_day, NEW.need_replacement);
+        INSERT INTO degradations_cdc (operation, clef, ref_deg, linked_aero, compo_concerned, usure_nouvelle, measure_day, need_replacement)
+        VALUES ('U', NEW.clef, NEW.ref_deg, NEW.linked_aero, NEW.compo_concerned, NEW.usure_nouvelle, NEW.measure_day, NEW.need_replacement);
     ELSIF (TG_OP = 'DELETE') THEN
-        INSERT INTO degradations_cdc (operation, ref_deg, linked_aero, compo_concerned, usure_nouvelle, measure_day, need_replacement)
-        VALUES ('D', OLD.ref_deg, OLD.linked_aero, OLD.compo_concerned, OLD.usure_nouvelle, OLD.measure_day, OLD.need_replacement);
+        INSERT INTO degradations_cdc (operation, clef, ref_deg, linked_aero, compo_concerned, usure_nouvelle, measure_day, need_replacement)
+        VALUES ('D', OLD.clef, OLD.ref_deg, OLD.linked_aero, OLD.compo_concerned, OLD.usure_nouvelle, OLD.measure_day, OLD.need_replacement);
     END IF;
     RETURN NULL;
 END;
@@ -76,14 +76,14 @@ CREATE OR REPLACE FUNCTION logs_vols_cdc_trigger()
 RETURNS TRIGGER AS $$
 BEGIN
     IF (TG_OP = 'INSERT') THEN
-        INSERT INTO logs_vols_cdc (operation, ref_vol, aero_linked, jour_vol, time_en_air, sensor_data, etat_voyant)
-        VALUES ('I', NEW.ref_vol, NEW.aero_linked, NEW.jour_vol, NEW.time_en_air, NEW.sensor_data, NEW.etat_voyant);
+        INSERT INTO logs_vols_cdc (operation, ref_vol, aero_linked, jour_vol, time_en_air, sensor_data, etat_voyant, vibrations, vibrations_unit, temp, temp_unit, pressure, pressure_unit)
+        VALUES ('I', NEW.ref_vol, NEW.aero_linked, NEW.jour_vol, NEW.time_en_air, NEW.sensor_data, NEW.etat_voyant, NEW.vibrations, NEW.vibrations_unit, NEW.temp, NEW.temp_unit, NEW.pressure, NEW.pressure_unit);
     ELSIF (TG_OP = 'UPDATE') THEN
-        INSERT INTO logs_vols_cdc (operation, ref_vol, aero_linked, jour_vol, time_en_air, sensor_data, etat_voyant)
-        VALUES ('U', NEW.ref_vol, NEW.aero_linked, NEW.jour_vol, NEW.time_en_air, NEW.sensor_data, NEW.etat_voyant);
+        INSERT INTO logs_vols_cdc (operation, ref_vol, aero_linked, jour_vol, time_en_air, sensor_data, etat_voyant, vibrations, vibrations_unit, temp, temp_unit, pressure, pressure_unit)
+        VALUES ('U', NEW.ref_vol, NEW.aero_linked, NEW.jour_vol, NEW.time_en_air, NEW.sensor_data, NEW.etat_voyant, NEW.vibrations, NEW.vibrations_unit, NEW.temp, NEW.temp_unit, NEW.pressure, NEW.pressure_unit);
     ELSIF (TG_OP = 'DELETE') THEN
-        INSERT INTO logs_vols_cdc (operation, ref_vol, aero_linked, jour_vol, time_en_air, sensor_data, etat_voyant)
-        VALUES ('D', OLD.ref_vol, OLD.aero_linked, OLD.jour_vol, OLD.time_en_air, OLD.sensor_data, OLD.etat_voyant);
+        INSERT INTO logs_vols_cdc (operation, ref_vol, aero_linked, jour_vol, time_en_air, sensor_data, etat_voyant, vibrations, vibrations_unit, temp, temp_unit, pressure, pressure_unit)
+        VALUES ('D', OLD.ref_vol, OLD.aero_linked, OLD.jour_vol, OLD.time_en_air, OLD.sensor_data, OLD.etat_voyant, OLD.vibrations, OLD.vibrations_unit, OLD.temp, OLD.temp_unit, OLD.pressure, OLD.pressure_unit);
     END IF;
     RETURN NULL;
 END;
