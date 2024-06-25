@@ -8,7 +8,7 @@ CREATE TABLE aeronefs (
     debut_service DATE NOT NULL,
     last_maint DATE NOT NULL,
     en_maintenance BOOLEAN NOT NULL,
-    end_maint DATE 
+    end_maint TIMESTAMP 
 );
 
 CREATE TABLE aeronefs_cdc (
@@ -18,7 +18,7 @@ CREATE TABLE aeronefs_cdc (
     debut_service DATE,
     last_maint DATE,
     en_maintenance BOOLEAN,
-    end_maint DATE,
+    end_maint TIMESTAMP,
     change_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
