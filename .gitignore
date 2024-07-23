@@ -168,3 +168,4 @@ dataset/
 
 *.bat
 *.pbix
+*.parquet
