@@ -168,8 +168,4 @@ dataset/
 
 *.bat
 *.pbix
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/main
-*.parquet
