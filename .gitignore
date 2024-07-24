@@ -170,3 +170,5 @@ dataset/
 *.pbix
 
 *.parquet
+
+*.pkl
