@@ -32,6 +32,7 @@ def run_notebook(date:str):
 aujourdhui = date.today()
 aujourdhui = aujourdhui.strftime('%Y-%m-%d')
 
+
 run_notebook(aujourdhui)
 
     
