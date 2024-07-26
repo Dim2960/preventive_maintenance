@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 
 def run_notebook(date:str):
-    with open(r'save_db_to_sql.ipynb', encoding='utf-8') as f:
+    with open(r'1_1_save_db_to_sql.ipynb', encoding='utf-8') as f:
         read_notebook = nbformat.read(f, as_version=4)
 
         # Créer une nouvelle cellule de code pour définir la variable
@@ -25,8 +25,8 @@ def run_notebook(date:str):
 
 
 # Définition des dates de début et de fin
-debut = datetime(2024, 6, 5)  # Date de début (année, mois, jour)
-fin = datetime(2024, 6, 24)  # Date de fin (année, mois, jour)
+debut = datetime(2024, 6, 4)  # Date de début (année, mois, jour)
+fin = datetime(2024, 7, 25)  # Date de fin (année, mois, jour)
 
 # Liste pour stocker les dates
 list_date = []
