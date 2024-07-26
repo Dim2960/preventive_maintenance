@@ -79,7 +79,8 @@ CREATE TABLE logs_vols (
     pressure FLOAT NOT NULL,
     pressure_unit VARCHAR(255) NOT NULL,
     vibrations FLOAT NOT NULL,
-    vibrations_unit VARCHAR(255) NOT NULL
+    vibrations_unit VARCHAR(255) NOT NULL,
+    prediction_etat_voyant INT NOT NULL DEFAULT 0
 );
 
 CREATE TABLE logs_vols_cdc (
