@@ -97,7 +97,9 @@ CREATE TABLE logs_vols_cdc (
     pressure_unit VARCHAR(255) NOT NULL,
     vibrations FLOAT NOT NULL,
     vibrations_unit VARCHAR(255) NOT NULL,
+    prediction_etat_voyant INT NOT NULL DEFAULT 0,
     change_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 
 
